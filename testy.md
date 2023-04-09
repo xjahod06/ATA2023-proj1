@@ -93,19 +93,19 @@ C6.3 -> C4.1 and C5.2
 # Combine tabulka
 | Test Case ID | C3 | C0 | C1 | C2 | C6 | C4 | C5 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | A | B | 150 | 00:00:24 | false | true | 
-| 1 | B | A | 500 | 00:01:01 | true | true | 
-| 1 | C | A | 150 | 18:48:12 | true | false | 
-| 2 | A | C | 50 | 00:01:01 | true | true | 
-| 2 | B | A | 50 | 00:01:00 | false | true | 
-| 2 | C | B | 500 | 14:23:00 | true | false | 
-| 3 | A | B | 50 | 13:01:37 | true | false | 
-| 3 | B | C | 150 | 00:00:28 | false | true | 
-| 3 | C | A | 50 | 00:01:01 | true | true | 
-| 4 | A | B | 50 | 00:01:01 | true | true | 
-| 4 | B | A | 150 | 12:28:34 | true | false | 
-| 4 | C | A | 50 | 00:01:00 | false | true | 
-| 1 | A | C | 500 | 00:00:52 | false | true | 
-| 4 | A | C | 50 | 12:28:37 | true | false | 
-| 2 | A | A | 150 | 00:00:56 | false | true | 
-| 1 | A | A | 150 | 00:01:01 | true | true | 
+| 1 | 1 | A | B | 150 | 00:00:24 | false | true | 
+| 2 | 1 | B | A | 500 | 00:01:01 | true | true | 
+| 3 | 1 | C | A | 150 | 18:48:12 | true | false | 
+| 4 | 2 | A | C | 50 | 00:01:01 | true | true | 
+| 5 | 2 | B | A | 50 | 00:01:00 | false | true | 
+| 6 | 2 | C | B | 500 | 14:23:00 | true | false | 
+| 7 | 3 | A | B | 50 | 13:01:37 | true | false | 
+| 8 | 3 | B | C | 150 | 00:00:28 | false | true | 
+| 9 | 3 | C | A | 50 | 00:01:01 | true | true | 
+| 10 | 4 | A | B | 50 | 00:01:01 | true | true | 
+| 11 | 4 | B | A | 150 | 12:28:34 | true | false | 
+| 12 | 4 | C | A | 50 | 00:01:00 | false | true | 
+| 13 | 1 | A | C | 500 | 00:00:52 | false | true | 
+| 14 | 4 | A | C | 50 | 12:28:37 | true | false | 
+| 15 | 2 | A | A | 150 | 00:00:56 | false | true | 
+| 16 | 1 | A | A | 150 | 00:01:01 | true | true | 
