@@ -21,8 +21,58 @@
 | --- | --- |
 | `source_station` | startovní stanice materialu |
 | `destination_station` | konečná stanice materialu |
-| `pickup_uptime` | čas od naložení materialu |
+| `request_uptime` | čas od vzniku požadavku |
 | `weight_material` | váha materialu |
 | `cart_load_capacity` | nosnost vozíku |
 | `cart_free_slots` | počet volných slotů ve vozíku |
-| `mode` | režim ve kterém se vozík nachází |
+| `mode` | určuje zda je vozík v režimu "pouze-vykládka" |
+
+# specifikace
+
+## source_station
+| C0 | startovaci stanice |
+| --- | --- |
+| 1 | A |
+| 2 | B |
+| 3 | C |
+
+## destination_station
+| C1 | konečná stanice |
+| --- | --- |
+| 1 | A |
+| 2 | B |
+| 3 | C |
+
+## cart_load_capacity
+| C2 | nosnost vozíku |
+| --- | --- |
+| 1 | 50 |
+| 2 | 150 |
+| 3 | 500 |
+
+## cart_free_slots
+| C3 | volné sloty ve vozíku |
+| --- | --- |
+| 1 | 1 |
+| 2 | 2 |
+| 3 | 3 | 
+| 4 | 4 | 
+
+## mode
+| C4 | určuje zda je vozík v režimu "pouze-vykládka" |
+| --- | --- | 
+| 1 | `true` |
+| 2 | *false* |
+
+## weight_material
+| C5 | určuje zda se material vejde do vozíku váhově |
+| --- | --- |
+| 1 | `true` |
+| 2 | *false* |
+
+## request_uptime
+| C6 | čas od naložení materialu na vozík |
+| --- | --- |
+| 1 | <=1 |
+| 2 | 1-2 |
+| 3 | >2 |
