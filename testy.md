@@ -88,3 +88,24 @@ C2.3 -> !C3.4
 C6.1 -> C5.1 and C4.2 and C5.1
 C6.2 -> C4.1 and C5.1
 ```
+
+# Combine tabulka
+| Test Case ID | C3 | C0 | C1 | C2 | C6 | C4 | C5 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 1 | A | B | 150 | <=1 | false | true |
+| 2 | 1 | B | A | 500 | 1-2 | true | true |
+| 3 | 1 | C | A | 150 | >2 | true | false |
+| 4 | 2 | A | C | 50 | 1-2 | true | true |
+| 5 | 2 | B | A | 50 | <= 1 | false | true |
+| 6 | 2 | C | B | 500 | >2 | false | false |
+| 7 | 3 | A | B | 50 | >2 | true | false |
+| 8 | 3 | B | C | 150 | <= 1 | false | true |
+| 9 | 3 | C | A | 50 | 1-2 | true | true |
+| 10 | 4 | A | B | 50 | 1-2 | true | true |
+| 11 | 4 | B | A | 150 | >2 | false | false |
+| 12 | 4 | C | A | 50 | <= 1 | false | true |
+| 13 | 1 | A | C | 500 | <= 1 | false | true |
+| 14 | 4 | A | C | 50 | >2 | true | true |
+| 15 | 2 | A | A | 150 | <= 1 | false | true |
+| 16 | 1 | A | A | 150 | 1-2 | true | true |
+| 17 | 1 | A | C | 50 | >2 | true | false |
