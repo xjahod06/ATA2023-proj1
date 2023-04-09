@@ -2,7 +2,7 @@
 | | popis | test 1 | test 2 | test 3 | test 4 |
 | --- | --- | --- | --- | --- | --- |
 | 1 | náklad materialu do 1 minuty od založení požadavku | 1 | 0 | 0 | 0 |
-| 2 | čas >= 1 minuta od nastavení požadavku | 0 | 1 | 0 | 0 |
+| 2 | čas >= 1 minuta od nastavení požadavku | 0 | 1 | 0 | 1 |
 | 3 | náklad materialu s prioritním atributem na 1 | 0 | 1 | 0 | 1 |
 | 5 | čas >= 1 minuta od nastavení prioritního požadavku | 0 | 0 | 1 | 0 |
 | 6 | vozík má ve svém slotu material s prioritním atributem 1 | 0 | 0 | 0 | 1 |
@@ -14,3 +14,15 @@
 | 43 | uložení požadavku do logu nestihnutých požadavku | *false* | *false* | `true` | *false* |
 | 44 | nastavení vozíku do režimu pouze vykládka | *false* | `true` | *false* | `true` |
 | 45 | zůstání v řežimu pouze vykládka | *false* | *false* | *false* | `true` |
+
+# parametry testů
+
+| název parametru | popis parametru |
+| --- | --- |
+| `source_station` | startovní stanice materialu |
+| `destination_station` | konečná stanice materialu |
+| `pickup_uptime` | čas od naložení materialu |
+| `weight_material` | váha materialu |
+| `cart_load_capacity` | nosnost vozíku |
+| `cart_free_slots` | počet volných slotů ve vozíku |
+| `mode` | režim ve kterém se vozík nachází |
