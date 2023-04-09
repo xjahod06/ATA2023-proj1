@@ -1,0 +1,81 @@
+{
+    "name": "SUT name",
+    "t_strength": "2",
+    "dont_care_values": "no",
+    "values": "values",
+    "parameters": [
+        {
+            "identificator": "C3",
+            "type": "integer",
+            "blocks": [
+                "C3 = 1",
+                "C3 = 2",
+                "C3 = 3",
+                "C3 = 4"
+            ]
+        },
+        {
+            "identificator": "C0",
+            "type": "enum",
+            "blocks": [
+                "A",
+                "B",
+                "C"
+            ]
+        },
+        {
+            "identificator": "C1",
+            "type": "enum",
+            "blocks": [
+                "A",
+                "B",
+                "C"
+            ]
+        },
+        {
+            "identificator": "C2",
+            "type": "integer",
+            "blocks": [
+                "C2 = 50",
+                "C2 = 150",
+                "C2 = 500"
+            ]
+        },
+        {
+            "identificator": "C6",
+            "type": "time",
+            "blocks": [
+                "C6 <= 00:01:00",
+                "C6 > 00:01:00 and C6 <= 00:02:00",
+                "C6 > 00:02:00"
+            ]
+        },
+        {
+            "identificator": "C4",
+            "type": "boolean",
+            "blocks": [
+                false,
+                true
+            ]
+        },
+        {
+            "identificator": "C5",
+            "type": "boolean",
+            "blocks": [
+                false,
+                true
+            ]
+        }
+    ],
+    "constraints": [
+        "C0.1 -> !C1.1",
+        "C0.2 -> !C1.2",
+        "C0.3 -> !C1.3",
+        "C2.1 -> !C3.1",
+        "C2.3 -> !C3.3",
+        "C2.3 -> !C3.4",
+        "C6.1 -> C5.1 and C4.2 and C5.1",
+        "C6.2 -> C4.1 and C5.1",
+        "C6.3 -> C4.1 and C5.2 "
+    ]
+}
