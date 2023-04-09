@@ -24,7 +24,7 @@
 | `request_uptime` | čas od vzniku požadavku |
 | `weight_material` | váha materialu |
 | `cart_load_capacity` | nosnost vozíku |
-| `cart_free_slots` | počet volných slotů ve vozíku |
+| `cart_slots` | počet slotů ve vozíku |
 | `mode` | určuje zda je vozík v režimu "pouze-vykládka" |
 
 # specifikace
@@ -50,8 +50,8 @@
 | 2 | 150 |
 | 3 | 500 |
 
-## cart_free_slots
-| C3 | volné sloty ve vozíku |
+## cart_slots
+| C3 | počet slotů ve vozíku |
 | --- | --- |
 | 1 | 1 |
 | 2 | 2 |
@@ -76,3 +76,15 @@
 | 1 | <=1 |
 | 2 | 1-2 |
 | 3 | >2 |
+
+## Constraints
+```
+C0.1 -> !C1.1
+C0.2 -> !C1.2
+C0.3 -> !C1.3
+C2.1 -> !C3.1
+C2.3 -> !C3.3
+C2.3 -> !C3.4
+C6.1 -> C5.1 and C4.2 and C5.1
+C6.2 -> C4.1 and C5.1
+```
