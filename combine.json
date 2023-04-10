@@ -26,8 +26,8 @@
             "identificator": "request_uptime",
             "type": "time",
             "blocks": [
-                "request_uptime <= 00:01:00",
-                "request_uptime > 00:01:00 and request_uptime <= 00:02:00",
+                "request_uptime < 00:01:00",
+                "request_uptime >= 00:01:00 and request_uptime <= 00:02:00",
                 "request_uptime  > 00:02:00"
             ]
         },
@@ -62,6 +62,6 @@
         "source_station.3 -> !destination_station.3",
         "request_uptime.1 -> free_weight.1 and mode.2 and free_slots.1",
         "request_uptime.2 -> mode.1 and free_weight.1 and free_slots.1",
-        "request_uptime.3 -> mode.1 and (free_weight.2 or free_slots.2)"
+        "request_uptime.3 -> (mode.1 and (free_weight.2 or free_slots.2))"
     ]
 }
