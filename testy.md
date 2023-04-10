@@ -15,6 +15,24 @@
 | 44 | nastavení vozíku do režimu pouze vykládka | *false* | `true` | *false* | `true` |
 | 45 | zůstání v řežimu pouze vykládka | *false* | *false* | *false* | `true` |
 
+# CEG 2
+| Name | Description                                              | Test 1   | Test 2   | Test 3   | Test 4   | Test 5   | Test 6   | Test 7   | Test 8   | Test 9   | Test 10  | Test 11  | Test 12  |
+|------|----------------------------------------------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| 1    | náklad materialu do 1 minuty od založení požadavku       | 1     | 1     | 1     | 1     | 0     | 0     | 0     | 0     | 0     | 0     | 0     | 0     |
+| 2    | čas >= 1 minuta od nastavení požadavku                   | 0     | 0     | 1     | 0     | 1     | 1     | 0     | 0     | 1     | 1     | 1     | 1     |
+| 3    | náklad materialu s prioritním atributem na 1             | 0     | 0     | 0     | 0     | 1     | 1     | 0     | 0     | 1     | 1     | 1     | 1     |
+| 5    | čas >= 1 minuta od nastavení prioritního požadavku       | 0     | 0     | 0     | 0     | 0     | 0     | 1     | 0     | 0     | 0     | 0     | 0     |
+| 6    | vozík má ve svém slotu material s prioritním atributem 1 | 0     | 0     | 0     | 0     | 0     | 0     | 0     | 0     | 1     | 0     | 1     | 0     |
+| 7    | vozík má volný dostatečný počet slotů pro material       | 1     | 1     | 1     | 0     | 1     | 1     | 1     | 1     | 1     | 0     | 0     | 0     |
+| 8    | naložením nákladu se nepřekročí hmotnostní limit         | 1     | 0     | 0     | 0     | 1     | 0     | 0     | 0     | 0     | 0     | 0     | 1     |
+| 40   | naložení materiálu na vozík                              | true  | false | false | false | false | false | false | false | false | false | false | false |
+| 41   | nastavení atributu priority materialu na 1               | false | false | true  | false | true  | true  | false | false | true  | true  | true  | true  |
+| 42   | naložení prioritního materialu na vozík                  | false | false | false | false | true  | false | false | false | false | false | false | false |
+| 43   | uložení požadavku do logu nestihnutých požadavku         | false | false | false | false | false | false | true  | false | false | false | false | false |
+| 44   | nastavení vozíku do režimu pouze vykládka                | false | false | false | false | false | false | false | false | true  | false | true  | false |
+| 45   | zůstání v řežimu pouze vykládka                          | false | false | false | false | false | false | false | false | true  | false | true  | false |
+
+
 # parametry testů
 
 | název parametru | popis parametru |
@@ -82,20 +100,23 @@ při využití nástroje combiner se objevila chyba, kdy nástroj pro v někter�
 
 | Test Case ID | source_station | destination_station | request_uptime | mode | free_weight | free_slots |
 | --- | --- | --- | --- | --- | --- | --- |
-| 1 | A | B | 00:01:00 | false | true | true |
+| 1 | A | B | 00:00:28 | false | true | true |
 | 2 | A | C | 00:01:01 | true | true | true |
-| 3 | B | A | 00:00:28 | false | true | true |
-| 4 | C | A | 00:01:01 | true | true | true |
+| 3 | B | A | 00:00:42 | false | true | true |
+| 4 | C | A | 00:01:21 | true | true | true |
 | 5 | C | B | 16:59:33 | true | false | true |
-| 6 | C | A | 00:01:00 | false | true | true |
+| 6 | C | A | 00:00:56 | false | true | true |
 | 7 | B | A | 18:47:57 | true | true | false |
-| 8 | A | B | 00:01:01 | true | true | true |
-| 9 | B | A | 00:01:01 | true | true | true |
-| 10 | A | C | 00:00:56 | false | true | true |
+| 8 | A | B | 00:01:42 | true | true | true |
+| 9 | B | A | 00:01:50 | true | true | true |
+| 10 | A | C | 00:00:19 | false | true | true |
 | 11 | B | A | 12:28:34 | true | false | true |
 | 12 | C | A | 14:30:12 | true | true | false |
 
 # Testy
 | test ID | popis | pokrytí CEG | pokrytí combine | výsledek |
 | --- | --- | --- | --- | --- |
-| 1 | spracování požadavku do jedné minuty od vytvoření | 1 | 1,5,8,12,13,15
+| 1 | spracování požadavku do jedné minuty od jeho vytvoření | 1 | 1,3,6,10 | OK |
+| 2 | spracování prioritního požadavku do 2 minut od jeho vytvoření | 2 | 2,4,8,9 | OK |
+| 3 | požadavek se nestihne zpracovat kvůli nedostatku nostnosti pro material | 3 | 5,11 | OK |
+| 4 | požadavek se nestihne zpracovat kvůli nedostatku volných slotu pro material | 3 | 7,12 | OK |
