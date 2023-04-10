@@ -5,16 +5,6 @@
     "values": "values",
     "parameters": [
         {
-            "identificator": "cart_slots",
-            "type": "integer",
-            "blocks": [
-                "cart_slots = 1",
-                "cart_slots = 2",
-                "cart_slots = 3",
-                "cart_slots = 4"
-            ]
-        },
-        {
             "identificator": "source_station",
             "type": "string",
             "blocks": [
@@ -42,16 +32,7 @@
             ]
         },
         {
-            "identificator": "cart_load_capacity",
-            "type": "integer",
-            "blocks": [
-                "cart_load_capacity = 50",
-                "cart_load_capacity = 150",
-                "cart_load_capacity = 500"
-            ]
-        },
-        {
-            "identificator": "weight_material",
+            "identificator": "mode",
             "type": "boolean",
             "blocks": [
                 false,
@@ -59,7 +40,15 @@
             ]
         },
         {
-            "identificator": "mode",
+            "identificator": "free_weight",
+            "type": "boolean",
+            "blocks": [
+                false,
+                true
+            ]
+        },
+        {
+            "identificator": "free_slots",
             "type": "boolean",
             "blocks": [
                 false,
@@ -71,11 +60,8 @@
         "source_station.1 -> !destination_station.1",
         "source_station.2 -> !destination_station.2",
         "source_station.3 -> !destination_station.3",
-        "cart_load_capacity.1 -> !cart_slots.1",
-        "cart_load_capacity.3 -> !cart_slots.3",
-        "cart_load_capacity.3 -> !cart_slots.4",
-        "request_uptime.1 -> weight_material.1 and mode.2",
-        "request_uptime.2 -> mode.1 and weight_material.1",
-        "request_uptime.3 -> mode.1 and weight_material.2 "
+        "request_uptime.1 -> free_weight.1 and mode.2 and free_slots.1",
+        "request_uptime.2 -> mode.1 and free_weight.1 and free_slots.1",
+        "request_uptime.3 -> mode.1 and (free_weight.2 or free_slots.2)"
     ]
 }
