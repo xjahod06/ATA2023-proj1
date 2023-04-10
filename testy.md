@@ -80,7 +80,7 @@ request_uptime.3 -> mode.1 and (free_weight.2 or free_slots.2)
 # Combine tabulka
 
 | Test Case ID | source_station | destination_station | request_uptime | mode | free_weight | free_slots |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | 1 | A | B | 00:01:00 | false | true | true |
 | 2 | A | C | 00:01:01 | true | true | true |
 | 3 | B | A | 00:00:28 | false | true | true |
