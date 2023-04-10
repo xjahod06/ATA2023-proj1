@@ -25,12 +25,12 @@
 | 6    | vozík má ve svém slotu material s prioritním atributem 1 | 0     | 0     | 0     | 0     | 0     | 0     | 0     | 0     | 1     | 0     | 1     | 0     |
 | 7    | vozík má volný dostatečný počet slotů pro material       | 1     | 1     | 1     | 0     | 1     | 1     | 1     | 1     | 1     | 0     | 0     | 0     |
 | 8    | naložením nákladu se nepřekročí hmotnostní limit         | 1     | 0     | 0     | 0     | 1     | 0     | 0     | 0     | 0     | 0     | 0     | 1     |
-| 40   | naložení materiálu na vozík                              | true  | false | false | false | false | false | false | false | false | false | false | false |
-| 41   | nastavení atributu priority materialu na 1               | false | false | true  | false | true  | true  | false | false | true  | true  | true  | true  |
-| 42   | naložení prioritního materialu na vozík                  | false | false | false | false | true  | false | false | false | false | false | false | false |
-| 43   | uložení požadavku do logu nestihnutých požadavku         | false | false | false | false | false | false | true  | false | false | false | false | false |
-| 44   | nastavení vozíku do režimu pouze vykládka                | false | false | false | false | false | false | false | false | true  | false | true  | false |
-| 45   | zůstání v řežimu pouze vykládka                          | false | false | false | false | false | false | false | false | true  | false | true  | false |
+| 40   | naložení materiálu na vozík                              | `true`  | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* |
+| 41   | nastavení atributu priority materialu na 1               | *false* | *false* | `true`  | *false* | `true`  | `true`  | *false* | *false* | `true`  | `true`  | `true`  | `true`  |
+| 42   | naložení prioritního materialu na vozík                  | *false* | *false* | *false* | *false* | `true`  | *false* | *false* | *false* | *false* | *false* | *false* | *false* |
+| 43   | uložení požadavku do logu nestihnutých požadavku         | *false* | *false* | *false* | *false* | *false* | *false* | `true`  | *false* | *false* | *false* | *false* | *false* |
+| 44   | nastavení vozíku do režimu pouze vykládka                | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* | `true`  | *false* | `true`  | *false* |
+| 45   | zůstání v řežimu pouze vykládka                          | *false* | *false* | *false* | *false* | *false* | *false* | *false* | *false* | `true`  | *false* | `true`  | *false* |
 
 
 # parametry testů
