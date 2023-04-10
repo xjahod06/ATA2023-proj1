@@ -27,31 +27,31 @@
 | `cart_slots` | počet slotů ve vozíku |
 | `mode` | určuje zda je vozík v režimu "pouze-vykládka" |
 
-# specifikace
+request_uptime# specifikace
 
 ## source_station
-| C0 | startovaci stanice |
+| source_station | startovaci stanice |
 | --- | --- |
 | 1 | A |
 | 2 | B |
 | 3 | C |
 
 ## destination_station
-| C1 | konečná stanice |
+| destination_station | konečná stanice |
 | --- | --- |
 | 1 | A |
 | 2 | B |
 | 3 | C |
 
 ## cart_load_capacity
-| C2 | nosnost vozíku |
+| cart_load_capacity | nosnost vozíku |
 | --- | --- |
 | 1 | 50 |
 | 2 | 150 |
 | 3 | 500 |
 
 ## cart_slots
-| C3 | počet slotů ve vozíku |
+| cart_slots | počet slotů ve vozíku |
 | --- | --- |
 | 1 | 1 |
 | 2 | 2 |
@@ -59,19 +59,19 @@
 | 4 | 4 | 
 
 ## mode
-| C4 | určuje zda je vozík v režimu "pouze-vykládka" |
+| mode | určuje zda je vozík v režimu "pouze-vykládka" |
 | --- | --- | 
 | 1 | `true` |
 | 2 | *false* |
 
 ## weight_material
-| C5 | určuje zda se material vejde do vozíku váhově |
+| weight_material | určuje zda se material vejde do vozíku váhově |
 | --- | --- |
 | 1 | `true` |
 | 2 | *false* |
 
 ## request_uptime
-| C6 | čas od naložení materialu na vozík |
+| request_uptime | čas od naložení materialu na vozík |
 | --- | --- |
 | 1 | <=1 |
 | 2 | 1-2 |
@@ -79,33 +79,38 @@
 
 ## Constraints
 ```
-C0.1 -> !C1.1
-C0.2 -> !C1.2
-C0.3 -> !C1.3
-C2.1 -> !C3.1
-C2.3 -> !C3.3
-C2.3 -> !C3.4
-C6.1 -> C5.1 and C4.2 and C5.1
-C6.2 -> C4.1 and C5.1
-C6.3 -> C4.1 and C5.2 
+source_station.1 -> !destination_station.1
+source_station.2 -> !destination_station.2
+source_station.3 -> !destination_station.3
+cart_load_capacity.1 -> !cart_slots.1
+cart_load_capacity.3 -> !cart_slots.3
+cart_load_capacity.3 -> !cart_slots.4
+request_uptime.1 -> weight_material.1 and mode.2
+request_uptime.2 -> mode.1 and weight_material.1
+request_uptime.3 -> mode.1 and weight_material.2 
 ```
 
 # Combine tabulka
-| Test Case ID | C3 | C0 | C1 | C2 | C6 | C4 | C5 |
+při využití nástroje combiner se objevila chyba, kdy nástroj pro poslední 4 kombinace vyignorovla constrain `source_station.1 -> !destination_station.1`, tyto řádky jsem tedy ručně vymazal
+
+| Test Case ID | cart_slots | source_station | destination_station | request_uptime | cart_load_capacity | weight_material | mode |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 1 | A | B | 150 | 00:00:24 | false | true | 
-| 2 | 1 | B | A | 500 | 00:01:01 | true | true | 
-| 3 | 1 | C | A | 150 | 18:48:12 | true | false | 
-| 4 | 2 | A | C | 50 | 00:01:01 | true | true | 
-| 5 | 2 | B | A | 50 | 00:01:00 | false | true | 
-| 6 | 2 | C | B | 500 | 14:23:00 | true | false | 
-| 7 | 3 | A | B | 50 | 13:01:37 | true | false | 
-| 8 | 3 | B | C | 150 | 00:00:28 | false | true | 
-| 9 | 3 | C | A | 50 | 00:01:01 | true | true | 
-| 10 | 4 | A | B | 50 | 00:01:01 | true | true | 
-| 11 | 4 | B | A | 150 | 12:28:34 | true | false | 
-| 12 | 4 | C | A | 50 | 00:01:00 | false | true | 
-| 13 | 1 | A | C | 500 | 00:00:52 | false | true | 
-| 14 | 4 | A | C | 50 | 12:28:37 | true | false | 
-| 15 | 2 | A | A | 150 | 00:00:56 | false | true | 
-| 16 | 1 | A | A | 150 | 00:01:01 | true | true | 
+| 1 | 1 | A | B | 00:01:00 | 150 | true | false |
+| 2 | 1 | B | A | 00:01:01 | 500 | true | true |
+| 3 | 1 | C | A | 15:45:42 | 150 | false | true |
+| 4 | 2 | A | C | 00:01:01 | 50 | true | true |
+| 5 | 2 | B | A | 00:00:44 | 50 | true | false |
+| 6 | 2 | C | B | 00:01:01 | 500 | true | true |
+| 7 | 3 | A | B | 14:08:53 | 50 | false | true |
+| 8 | 3 | B | C | 00:01:00 | 150 | true | false |
+| 9 | 3 | C | A | 00:00:52 | 50 | true | false |
+| 10 | 4 | A | B | 00:01:00 | 50 | true | false |
+| 11 | 4 | B | A | 12:28:37 | 150 | false | true |
+| 12 | 4 | C | A | 00:01:01 | 150 | true | true |
+| 13 | 1 | A | C | 12:28:34 | 500 | false | true |
+| 14 | 4 | A | C | 00:00:28 | 50 | true | false |
+
+# Testy
+| test ID | popis | pokrytí CEG | pokrytí combine | výsledek |
+| --- | --- | --- | --- | --- |
+| 1 | spracování požadavku do jedné minuty od vytvoření | 1 | 1,5,8,12,13,15

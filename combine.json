@@ -1,57 +1,57 @@
 {
-    "name": "SUT name",
+    "name": "řízení vozíku",
     "t_strength": "2",
     "dont_care_values": "no",
     "values": "values",
     "parameters": [
         {
-            "identificator": "C3",
+            "identificator": "cart_slots",
             "type": "integer",
             "blocks": [
-                "C3 = 1",
-                "C3 = 2",
-                "C3 = 3",
-                "C3 = 4"
+                "cart_slots = 1",
+                "cart_slots = 2",
+                "cart_slots = 3",
+                "cart_slots = 4"
             ]
         },
         {
-            "identificator": "C0",
-            "type": "enum",
+            "identificator": "source_station",
+            "type": "string",
             "blocks": [
-                "A",
-                "B",
-                "C"
+                "source_station = 'A'",
+                "source_station = 'B'",
+                "source_station = 'C'"
             ]
         },
         {
-            "identificator": "C1",
-            "type": "enum",
+            "identificator": "destination_station",
+            "type": "string",
             "blocks": [
-                "A",
-                "B",
-                "C"
+                "destination_station = 'A'",
+                "destination_station = 'B'",
+                "destination_station = 'C'"
             ]
         },
         {
-            "identificator": "C2",
-            "type": "integer",
-            "blocks": [
-                "C2 = 50",
-                "C2 = 150",
-                "C2 = 500"
-            ]
-        },
-        {
-            "identificator": "C6",
+            "identificator": "request_uptime",
             "type": "time",
             "blocks": [
-                "C6 <= 00:01:00",
-                "C6 > 00:01:00 and C6 <= 00:02:00",
-                "C6 > 00:02:00"
+                "request_uptime <= 00:01:00",
+                "request_uptime > 00:01:00 and request_uptime <= 00:02:00",
+                "request_uptime  > 00:02:00"
             ]
         },
         {
-            "identificator": "C4",
+            "identificator": "cart_load_capacity",
+            "type": "integer",
+            "blocks": [
+                "cart_load_capacity = 50",
+                "cart_load_capacity = 150",
+                "cart_load_capacity = 500"
+            ]
+        },
+        {
+            "identificator": "weight_material",
             "type": "boolean",
             "blocks": [
                 false,
@@ -59,7 +59,7 @@
             ]
         },
         {
-            "identificator": "C5",
+            "identificator": "mode",
             "type": "boolean",
             "blocks": [
                 false,
@@ -68,14 +68,14 @@
         }
     ],
     "constraints": [
-        "C0.1 -> !C1.1",
-        "C0.2 -> !C1.2",
-        "C0.3 -> !C1.3",
-        "C2.1 -> !C3.1",
-        "C2.3 -> !C3.3",
-        "C2.3 -> !C3.4",
-        "C6.1 -> C5.1 and C4.2 and C5.1",
-        "C6.2 -> C4.1 and C5.1",
-        "C6.3 -> C4.1 and C5.2 "
+        "source_station.1 -> !destination_station.1",
+        "source_station.2 -> !destination_station.2",
+        "source_station.3 -> !destination_station.3",
+        "cart_load_capacity.1 -> !cart_slots.1",
+        "cart_load_capacity.3 -> !cart_slots.3",
+        "cart_load_capacity.3 -> !cart_slots.4",
+        "request_uptime.1 -> weight_material.1 and mode.2",
+        "request_uptime.2 -> mode.1 and weight_material.1",
+        "request_uptime.3 -> mode.1 and weight_material.2 "
     ]
 }
